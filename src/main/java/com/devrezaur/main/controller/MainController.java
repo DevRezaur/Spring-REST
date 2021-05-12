@@ -5,6 +5,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.devrezaur.main.model.Course;
 import com.devrezaur.main.model.Student;
@@ -43,4 +45,15 @@ public class MainController {
 	public Optional<Course> getCourse(@PathVariable("id") int id) {
 		return courseRepo.findById(id);
 	}
+	
+	@PostMapping("/student/add")
+	public Student addStudent(@RequestBody Student student) {
+		return studentRepo.save(student);
+	}
+	
+	@PostMapping("/course/add")
+	public Course addCourse(@RequestBody Course course) {
+		return courseRepo.save(course);
+	}
+	
 }
